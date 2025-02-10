@@ -1,0 +1,44 @@
+# Ignore Python cache and environment
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.venv/
+env/
+venv/
+*.egg-info/
+
+# Ignore C# build artifacts
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.cache/
+*.csproj.user
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.suo
+*.user
+*.vs/
+*.log
+
+# Ignore compiled bytecode
+*.class
+*.o
+*.out
+*.a
+*.so
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.swp
+*.bak
+*.old
+
+# Ignore dependency files
+node_modules/
+packages/
